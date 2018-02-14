@@ -23,7 +23,7 @@ export default class Artist extends Component {
 					{this.props.artist.followers ? "Followers: " + this.props.artist.followers.total : ''}
 				</span>
 			</li>
-				<li> <img src={this.props.artist.images ? this.props.artist.images[0].url : ''} width="100" height="100" /> </li>
+				<li className="artist-image"> <img src={this.props.artist.images ? this.props.artist.images[0].url : ''} width="100" height="100" /> </li>
 			</ul>
     );
   }
