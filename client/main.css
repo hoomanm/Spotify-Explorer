@@ -1,18 +1,13 @@
 /* CSS declarations go here */
+
+/********** General Styles ***************/
 body {
   font-family: sans-serif;
   font-size: 14px;
   background-image: linear-gradient(to bottom, #77b300, #918e82 100%);
   background-attachment: fixed;
 }
- 
-.container {
-  max-width: 600px;
-  margin: 0 auto;
-  min-height: 100%;
-  background: white;
-}
- 
+
 header {
   background: #d2edf4;
   background-image: linear-gradient(to bottom, #d0edf5, #e1e5f0 100%);
@@ -27,18 +22,58 @@ h1 {
   /*margin-right: 1em;*/
 }
 
-h1.main-header {
-  color: #136913;
-  text-align: center;
-  margin: 20px;
+ul {
+  margin: 0;
+  padding: 0;
+  background: white;
 }
  
+li {
+  position: relative;
+  list-style: none;
+  padding: 12px;
+  border-bottom: #eee solid 1px;
+}
+
 form {
   margin-top: 10px;
   margin-bottom: -10px;
   position: relative;
 }
- 
+
+/********** App Component Styles ***************/
+.container {
+  float:left;
+  margin-left: 1%;
+  margin-bottom: 1%;
+  /*background: white;
+  max-width: 600px;
+  margin: 0 auto;
+  min-height: 100%;*/
+}
+
+h1.main-header {
+  color: #136913;
+  text-align: center;
+  margin: 20px;
+}
+
+h1.search-header {
+  padding: 5px;
+}
+
+a.search-result-link {
+  text-decoration: none;
+}
+
+a.search-result-link:hover {
+  color: green;
+}
+
+.search-result-item {
+  padding:10px;
+}
+
 .new-artist input {
   box-sizing: border-box;
   padding: 10px 0;
@@ -52,20 +87,27 @@ form {
 .new-artist input:focus{
   outline: 0;
 }
- 
-ul {
-  margin: 0;
-  padding: 0;
+
+/********** Artist Component Styles ***************/
+#artist-profile {
+  min-height: 0;
   background: white;
 }
- 
-li {
-  position: relative;
-  list-style: none;
-  padding: 15px;
-  border-bottom: #eee solid 1px;
+
+.artist-image-container {
+  float: left;
+  padding: 0;
+  margin-right: 25px;
 }
- 
+
+.artist-image {
+  margin: 5px;
+  border-radius: 50%;
+  border: 1px solid #ddd;
+  padding: 1px
+}
+
+/********** @media Styles ***************/
 @media (max-width: 600px) {
   li {
     padding: 12px 15px;
@@ -75,3 +117,6 @@ li {
     padding-bottom: 5px;
   }
 }
+
+
+

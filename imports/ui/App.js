@@ -13,7 +13,7 @@ export default class App extends Component {
     super(props);
  
     this.state = {
-      artist: [],
+      artists: [],
     };
   }
 
@@ -26,11 +26,21 @@ export default class App extends Component {
           if(results == "NotFound")
             alert("Artist Not Found");
           else {
+
             if (error)
                 console.log("Error in retrieving artist data: " + error);
             else{
-                console.log(JSON.parse(results));
-                this.setState({artist: JSON.parse(results)});
+
+                let artists_list = []
+                results.map((artist) => {
+                  
+                  console.log(artist)
+                  artists_list.push(artist)
+                });
+                //console.log("Whyyyyy")
+                console.log(artists_list)
+                //console.log(JSON.parse(results));
+                this.setState({artists: artists_list});
             }
           }
       }
@@ -41,26 +51,49 @@ export default class App extends Component {
 
     ReactDOM.findDOMNode(this.refs.textInput).value = '';
   }
+
+  showArtistInfo(artist){
+    console.log("Inffoooooooo")
+    console.log(artist)
+    ReactDOM.render(<Artist artist={artist}/>, document.getElementById('artist-profile'));
+  }
+
+  showSearchResults(){
+    return this.state.artists.map((artist) => {
+      if(artist.name)
+        return (<li key={artist.id} className="search-result-item"> 
+                  <a className="search-result-link" href="#" onClick={this.showArtistInfo.bind(this, artist)}> {artist['name']} </a>
+                </li>
+                );
+      });
+  }
  
   render() {
     return (
-      <div className="container">
-        <header>
+      <div>
+        <div className="container col-md-4">
+          <header>
 
-          <h1>Search You Favorite Artist</h1>
-          
-          <form className="new-artist" onSubmit={this.getArtist.bind(this)} >
-            <input
-              type="text"
-              ref="textInput"
-              placeholder="Type the name of the artist"/>
-          </form>
-          
-        </header>
+            <h1 className="search-header">Search Your Favorite Artist</h1>
+            
+            <form className="new-artist" onSubmit={this.getArtist.bind(this)} >
+              <input
+                type="text"
+                ref="textInput"
+                placeholder="Type the name of the artist"/>
+            </form>
+            
+          </header>
 
-        <Artist key={this.state.artist.id} artist={this.state.artist} />
+          <ul>
+            {this.showSearchResults()}
+          </ul>
+        </div>
+
+        <div id="artist-profile" className="col-md-6">
+        </div> 
+      </div>       
         
-      </div>
     );
   }
 }
