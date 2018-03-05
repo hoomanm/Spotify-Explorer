@@ -107,6 +107,14 @@ a.search-result-link:hover {
   padding: 1px
 }
 
+.artist-albums-container {
+  margin-top: 10px;
+}
+
+.artist-info-button {
+  margin:7px;
+}
+
 /********** @media Styles ***************/
 @media (max-width: 600px) {
   li {
