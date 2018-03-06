@@ -115,6 +115,19 @@ a.search-result-link:hover {
   margin:7px;
 }
 
+button.album-link {
+  background:none;
+  border:none;
+}
+
+button.album-link:hover {
+  color:mediumblue;
+  text-decoration: underline;
+}
+
+.track-item {
+  padding: 5px;
+}
 /********** @media Styles ***************/
 @media (max-width: 600px) {
   li {

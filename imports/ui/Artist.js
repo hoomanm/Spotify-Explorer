@@ -113,7 +113,7 @@ export default class Artist extends Component {
 					<div className="artist-albums-container col-md-12">
 						<button className="btn btn-info artist-info-button" onClick={this.getAlbums.bind(this)}> Show Albums </button>
 						<button className="btn btn-info artist-info-button" onClick={this.getRelatedArtists.bind(this)}> Show Related Artists </button>
-						<ul> {this.state.showInfo == "albums" ? albums : (this.state.showInfo == "relatedArtists" ? related_artists : '')} </ul>
+						<div> {this.state.showInfo == "albums" ? albums : (this.state.showInfo == "relatedArtists" ? related_artists : '')} </div>
 					</div>
 				</div>
 	    	);

@@ -9,8 +9,8 @@ if (Meteor.isServer) {
 
 	Meteor.methods({
 
-		'getArtistInfo'(artistName){
-			let access_token = "BQBlkuDMVh1hwhxQGawAvTPyQCv8ZiWiclT2yPmeK4ZJNWnlm5ccgu1TTpet0uyJkLAZHs9EYHtUWPJbFcw"
+		'getArtistInfo'(artistName) {
+			let access_token = "BQCGjRixP4LGk9XSOwJQ1js_m5retubmnaiEY5zBIy9vFJQv92FKUTCtQCvKH8vIjWXf-ryCDanY0m7uXDk"
 			
 			// First HTTP Call to get artist id
 			let url = "https://api.spotify.com/v1/search"
@@ -52,12 +52,11 @@ if (Meteor.isServer) {
 			// }
 		},
 
-		'getArtistAlbums'(artistId){
-			let access_token = "BQBlkuDMVh1hwhxQGawAvTPyQCv8ZiWiclT2yPmeK4ZJNWnlm5ccgu1TTpet0uyJkLAZHs9EYHtUWPJbFcw"
+		'getArtistAlbums'(artistId) {
+			let access_token = "BQCGjRixP4LGk9XSOwJQ1js_m5retubmnaiEY5zBIy9vFJQv92FKUTCtQCvKH8vIjWXf-ryCDanY0m7uXDk"
 			
 			console.log(artistId);
 			let url = "https://api.spotify.com/v1/artists/" + artistId + "/albums";
-			let first_artist_id = '';
 			try{
 			    let callResult = HTTP.call('GET', url,
 					{params: {"market": "US", "album_type": "album"},
@@ -77,18 +76,17 @@ if (Meteor.isServer) {
 			}	
 		},
 
-		'getRelatedArtists'(artistId){
-			let access_token = "BQBlkuDMVh1hwhxQGawAvTPyQCv8ZiWiclT2yPmeK4ZJNWnlm5ccgu1TTpet0uyJkLAZHs9EYHtUWPJbFcw"
+		'getRelatedArtists'(artistId) {
+			let access_token = "BQCGjRixP4LGk9XSOwJQ1js_m5retubmnaiEY5zBIy9vFJQv92FKUTCtQCvKH8vIjWXf-ryCDanY0m7uXDk"
 			
 			console.log(artistId);
 			let url = "https://api.spotify.com/v1/artists/" + artistId + "/related-artists";
-			let first_artist_id = '';
 			try{
 			    let callResult = HTTP.call('GET', url,
 					{headers: {"Authorization": " Bearer " + access_token}});
 			    
 			    related_artists = JSON.parse(callResult.content);
-			    if(related_artists.length == 0)
+			    if(related_artists['artists'].length == 0)
 			    	return "NotFound"
 			    else {
 			    	console.log(related_artists);
@@ -99,6 +97,29 @@ if (Meteor.isServer) {
 			    console.log("Call Error: " + callErr);
 			    return "NotFound"
 			}	
+		},
+
+		'getAlbumTracks'(albumId) {
+			let access_token = "BQCGjRixP4LGk9XSOwJQ1js_m5retubmnaiEY5zBIy9vFJQv92FKUTCtQCvKH8vIjWXf-ryCDanY0m7uXDk"
+			
+			console.log(albumId);
+			let url = "https://api.spotify.com/v1/albums/" + albumId + "/tracks";
+			try{
+			    let callResult = HTTP.call('GET', url,
+					{headers: {"Authorization": " Bearer " + access_token}});
+			    
+			    tracks = JSON.parse(callResult.content);
+			    if(tracks['items'].length == 0)
+			    	return "NotFound"
+			    else {
+			    	console.log(tracks);
+			    	return tracks['items'];
+				}
+			}
+			catch(callErr){
+			    console.log("Call Error: " + callErr);
+			    return "NotFound"
+			}
 		},
 
 	});
