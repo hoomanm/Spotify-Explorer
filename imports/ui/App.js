@@ -68,7 +68,7 @@ export default class App extends Component {
     render() {
         return (
             <div>
-                <div className="container col-md-4">
+                <div className="container col-md-3">
                     <header>
                         <h1 className="search-header">Search Your Favorite Artist</h1>
                         <form className="new-artist" onSubmit={this.getArtist.bind(this)} >
@@ -82,7 +82,9 @@ export default class App extends Component {
                         {this.showSearchResults()}
                     </ul>
                 </div>
-                <div id="artist-profile" className="col-md-6">
+                <div id="artist-profile" className="col-md-5">
+                </div> 
+                <div id="compare-artists" className="col-md-3">
                 </div> 
             </div>       
         );

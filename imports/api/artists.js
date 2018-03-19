@@ -5,13 +5,12 @@ import { HTTP } from 'meteor/http'
  
 export const Artists = new Mongo.Collection('artists');
 
+const access_token = "BQAVHpvMi3yELEm11kGuoy_3MYoIiahcZdpYX5kxEc6E3OaHhfjmzN2_gEOD29iEtlfbfBtcY_kIT3rB65M"
 if (Meteor.isServer) {
 
 	Meteor.methods({
 
 		'getArtistInfo'(artistName) {
-			let access_token = "BQCGjRixP4LGk9XSOwJQ1js_m5retubmnaiEY5zBIy9vFJQv92FKUTCtQCvKH8vIjWXf-ryCDanY0m7uXDk"
-			
 			// First HTTP Call to get artist id
 			let url = "https://api.spotify.com/v1/search"
 			let first_artist_id = '';
@@ -53,8 +52,6 @@ if (Meteor.isServer) {
 		},
 
 		'getArtistAlbums'(artistId) {
-			let access_token = "BQCGjRixP4LGk9XSOwJQ1js_m5retubmnaiEY5zBIy9vFJQv92FKUTCtQCvKH8vIjWXf-ryCDanY0m7uXDk"
-			
 			console.log(artistId);
 			let url = "https://api.spotify.com/v1/artists/" + artistId + "/albums";
 			try{
@@ -77,7 +74,7 @@ if (Meteor.isServer) {
 		},
 
 		'getRelatedArtists'(artistId) {
-			let access_token = "BQCGjRixP4LGk9XSOwJQ1js_m5retubmnaiEY5zBIy9vFJQv92FKUTCtQCvKH8vIjWXf-ryCDanY0m7uXDk"
+			//let access_token = "BQCGjRixP4LGk9XSOwJQ1js_m5retubmnaiEY5zBIy9vFJQv92FKUTCtQCvKH8vIjWXf-ryCDanY0m7uXDk"
 			
 			console.log(artistId);
 			let url = "https://api.spotify.com/v1/artists/" + artistId + "/related-artists";
@@ -100,8 +97,6 @@ if (Meteor.isServer) {
 		},
 
 		'getAlbumTracks'(albumId) {
-			let access_token = "BQCGjRixP4LGk9XSOwJQ1js_m5retubmnaiEY5zBIy9vFJQv92FKUTCtQCvKH8vIjWXf-ryCDanY0m7uXDk"
-			
 			console.log(albumId);
 			let url = "https://api.spotify.com/v1/albums/" + albumId + "/tracks";
 			try{

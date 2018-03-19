@@ -16,7 +16,7 @@ header {
 }
  
 h1 {
-  font-size: 1.5em;
+  font-size: 1.4em;
   margin-bottom: 10px;
   /*display: inline-block;*/
   /*margin-right: 1em;*/
@@ -56,6 +56,9 @@ h1.main-header {
   color: #136913;
   text-align: center;
   margin: 20px;
+  margin-bottom: 45px;
+  font-family: serif;
+  font-size: 2.1em;
 }
 
 h1.search-header {
@@ -88,6 +91,13 @@ a.search-result-link:hover {
   outline: 0;
 }
 
+.col-md-5{
+  width:46%;
+}
+
+#compare-artists {
+  width:27.5%;
+}
 /********** Artist Component Styles ***************/
 #artist-profile {
   min-height: 0;
@@ -115,13 +125,14 @@ a.search-result-link:hover {
   margin:7px;
 }
 
-button.album-link {
+button.link {
   background:none;
   border:none;
+  color:#0ea0a7;
 }
 
-button.album-link:hover {
-  color:mediumblue;
+button.link:hover {
+  color:#0e60a7;
   text-decoration: underline;
 }
 
