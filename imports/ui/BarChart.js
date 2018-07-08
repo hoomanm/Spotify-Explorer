@@ -6,8 +6,7 @@ import ReactDOM from 'react-dom';
 export default class BarChart extends Component {
  
     render() {
-    	console.log("Bar Charttttttt!")
-    	console.log(this.props.artists[0].followers.total)
+    	//console.log(this.props.artists[0].followers.total)
         return (
           <div>
 		      <div className='popularity-chart-container'>
